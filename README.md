@@ -6,7 +6,7 @@ The project is implemented using python 3.9 and the [starlette](https://www.star
 
 ## Getting started
 * Clone or fork this repository
-* Install reqirements using `pip install -r reqiurements.txt`
+* Install requirements using `pip install -r requirements.txt`
 * Run the server using `python -m nifty`
 * Access the endpoint at `localhost:8888/nifty/stocks/{symbol}`
 
@@ -51,7 +51,7 @@ For example:
 
     GET /nifty/stocks/tatamotors/?year=2017
 
-* This should only return rows for the specified year
+* This should only return rows for the specified year (and symbol)
 * If there is no data for the specified year, an empty list should be returned
 * If the year is invalid, the endpoint should return 400 and an appropriate error message
 
