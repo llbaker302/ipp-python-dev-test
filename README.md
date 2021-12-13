@@ -4,6 +4,12 @@ This project is a partially implemented web API that returns historical stock ma
 
 The project is implemented using python 3.9 and the [starlette](https://www.starlette.io/) ASGI web framework.
 
+## Getting started
+* Clone or fork this repository
+* Install reqirements using `pip install -r reqiurements.txt`
+* Run the server using `python -m nifty`
+* Access the endpoint at `localhost:8888/nifty/stocks/{symbol}`
+
 
 ## Summary of requirements
 
@@ -52,8 +58,8 @@ For example:
 
 ## Additional information
 * You should use python 3.9 or above
-* You may use any appropriate open source python libs as part of your solution
-* Please upload your solution to github.com or similar and provide a link
+* You may use any appropriate open source libs as part of your solution
+* Please upload your project to github.com or similar and provide a link
 * If you have questions please email support@ipushpull.com
 
-Thank you for taking the test!
+Thanks for taking our test!
