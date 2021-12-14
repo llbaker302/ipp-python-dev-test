@@ -12,10 +12,8 @@ async def price_data(request: Request) -> JSONResponse:
     symbol = request.path_params['symbol']
 
     # TODO:
-    # 1) Return open, close, high, low prices for the requested symbol as json records
-    # 2) Allow calling app to filter the data by specifying optionl 'to' and 'from' dates
-    #    as query parameters
-    # 3) Allow callers to sort the returned data by any of the four prices returned using a 'sort' query parameter
+    # 1) Return open, high, low & close prices for the requested symbol as json records
+    # 2) Allow calling app to filter the data by year using an optional query parameter
 
     # Symbol data is stored in the file data/nifty50_all.csv
 

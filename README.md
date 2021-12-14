@@ -57,7 +57,7 @@ For example:
 
 
 ## Additional information
-* You should use python 3.9 or above
+* You should use python 3.6 or above
 * You may use any appropriate open source libs as part of your solution
 * Please upload your project to github.com or similar and provide a link
 * If you have questions please email support@ipushpull.com
