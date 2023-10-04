@@ -15,7 +15,7 @@ The project is implemented using python 3.6 and the [starlette](https://www.star
 
 
 ### 1) Return historical price data
-Implement the `price_data` function in `__main__.py` to return **open**, **close**, **high** and **low** prices for the requested symbol as json records. 
+Implement the `price_data` function in `__main__.py` to return **open**, **close**, **high** and **low** prices for the requested symbol as JSON records. 
 
 For example:
 
@@ -42,6 +42,7 @@ should  return
 * The endpoint should return one record for each row of data in the file
 * Returned data should be sorted by date, most recent data first
 * If an invalid symbol is requested, the endpoint should return 400 with an appropriate error message
+* The solution should allow the dataset to be updated (e.g. new data added) without restarting the app
 
 
 ### 2) Allow the price data to be filtered by year
@@ -56,8 +57,38 @@ For example:
 * If the year is invalid, the endpoint should return 400 and an appropriate error message
 
 
+### 3) Provide a POST method that allows new data to be added
+
+For example:
+
+    POST /nifty/stocks/tatamotors/
+
+Should accept:
+
+```json
+[
+    {
+        "date": "26/12/2003",
+        "open": 435.8,
+        "high": 440.5,
+        "low": 431.65,
+        "close": 438.6
+    },
+    {
+        ...
+    }
+]
+```
+
+* The endpoint should only allow new data to be added, it should not allow an existing value to be updated
+* Any subset of **OPEN**, **CLOSE**, **HIGH**, **LOW** should be accepted - no other price-types are acceptable
+* Updates should be validated as follows:
+  * Dates must be in the format DD/MM/YYYY
+  * Prices must be within 1 standard deviation of the prior 50 values for that combination of stock and price-type
+* Updates should be persisted
+
 ## Additional information
-* You should use python 3.6 or above
+* You should use python 3.9 or above
 * You may use any appropriate open source libs as part of your solution
 * Please upload your project to github.com or similar and provide a link
 * If you have questions please email support@ipushpull.com
