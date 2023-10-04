@@ -2,7 +2,7 @@
 
 This project is a partially implemented web API that returns historical stock market data (open, close, high and low prices) for stocks in the [Indian Nifty50](https://www.nseindia.com/) stock index.
 
-The project is implemented using python 3.6 and the [starlette](https://www.starlette.io/) ASGI web framework.
+The project is implemented using python 3.9 and the [starlette](https://www.starlette.io/) ASGI web framework.
 
 ## Getting started
 * Clone or fork this repository
@@ -57,35 +57,15 @@ For example:
 * If the year is invalid, the endpoint should return 400 and an appropriate error message
 
 
-### 3) Provide a POST method that allows new data to be added
+### 3) Extend the endpoint to allow new data to be added
 
-For example:
-
-    POST /nifty/stocks/tatamotors/
-
-Should accept:
-
-```json
-[
-    {
-        "date": "26/12/2003",
-        "open": 435.8,
-        "high": 440.5,
-        "low": 431.65,
-        "close": 438.6
-    },
-    {
-        ...
-    }
-]
-```
-
-* The endpoint should only allow new data to be added, it should not allow an existing value to be updated
+* The endpoint should only accept JSON and allow prices for one or more days to be added to the dataset
+* It should only allow new data to be added, it should not allow an existing value to be updated
 * Any subset of **OPEN**, **CLOSE**, **HIGH**, **LOW** should be accepted - no other price-types are acceptable
 * Updates should be validated as follows:
   * Dates must be in the format DD/MM/YYYY
-  * Prices must be within 1 standard deviation of the prior 50 values for that combination of stock and price-type
-* Updates should be persisted
+  * Prices must be within 1 standard deviation of the prior 50 values for that combination of symbol and price-type
+* New data should be persisted and immeidately accessible via GET
 
 ## Additional information
 * You should use python 3.9 or above
