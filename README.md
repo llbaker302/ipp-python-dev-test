@@ -65,7 +65,7 @@ For example:
 * Updates should be validated as follows:
   * Dates must be in the format DD/MM/YYYY
   * Prices must be within 1 standard deviation of the prior 50 values for that combination of symbol and price-type
-* New data should be persisted and immeidately accessible via GET
+* New data should be persisted and immediately accessible via GET
 
 ## Additional information
 * You should use python 3.9 or above
