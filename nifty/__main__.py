@@ -94,8 +94,8 @@ async def create_price(request: Request) -> JSONResponse:
     for col in new_row.columns:
         new_row.rename(columns={col: col.capitalize()}, inplace=True)
     new_data_frame = pd.concat([full_data_frame, new_row], ignore_index=True).fillna(0)
-    df_to_csv(SOURCE_FILE, new_data_frame)
-    if full_data_frame is None:
+    
+    if df_to_csv(SOURCE_FILE, new_data_frame) is None:
         return JSONResponse(
             content={"message": f"Error writing to file"},
             status_code=HTTPStatus.BAD_REQUEST,
