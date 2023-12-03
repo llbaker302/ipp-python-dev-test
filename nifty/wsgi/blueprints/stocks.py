@@ -31,7 +31,7 @@ async def price_data(request: Request) -> JSONResponse:
     full_data_frame = csv_to_df(SOURCE_FILE)
     if full_data_frame is None:
         return JSONResponse(
-            content={"error": f"Error reading from data file"},
+            content={"error": "Error reading from data file"},
             status_code=HTTPStatus.BAD_REQUEST,
         )
 
@@ -40,6 +40,11 @@ async def price_data(request: Request) -> JSONResponse:
         symbol=request.path_params.get("symbol"),
         year=request.query_params.get("year"),
     )
+    if response_json is None:
+        return JSONResponse(
+            content={"error": f"Invalid symbol {request.path_params.get("symbol")}"},
+            status_code=HTTPStatus.BAD_REQUEST,
+        )
 
     return JSONResponse(content=response_json, status_code=HTTPStatus.OK)
 
