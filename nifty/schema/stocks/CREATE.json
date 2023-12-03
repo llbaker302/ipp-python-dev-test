@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "date": {
+            "type": "string",
+            "format": "date"
+        },
+        "symbol": {
+            "type": "string"
+        },
+        "close": {
+            "type": "number",
+            "minimum": 0
+        },
+        "open": {
+            "type": "number",
+            "minimum": 0
+        },
+        "high": {
+            "type": "number",
+            "minimum": 0
+        },
+        "low": {
+            "type": "number",
+            "minimum": 0
+        }
+    },
+    "required": [
+        "date",
+        "symbol"
+    ],
+    "oneOf": [
+        {
+            "required": [
+                "close"
+            ]
+        },
+        {
+            "required": [
+                "open"
+            ]
+        },
+        {
+            "required": [
+                "high"
+            ]
+        },
+        {
+            "required": [
+                "low"
+            ]
+        }
+    ],
+    "additionalProperties": false
+}
