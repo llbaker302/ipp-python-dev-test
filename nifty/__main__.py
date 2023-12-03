@@ -27,7 +27,7 @@ async def price_data(request: Request) -> JSONResponse:
 
     error_message = validate_parameters(request=request)
     if error_message:
-        JSONResponse(content=error_message, status_code=HTTPStatus.BAD_REQUEST)
+        return JSONResponse(content=error_message, status_code=HTTPStatus.BAD_REQUEST)
 
     full_data_frame = csv_to_df(SOURCE_FILE)
     if full_data_frame is None:
@@ -95,6 +95,11 @@ async def create_price(request: Request) -> JSONResponse:
         new_row.rename(columns={col: col.capitalize()}, inplace=True)
     new_data_frame = pd.concat([full_data_frame, new_row], ignore_index=True).fillna(0)
     df_to_csv(SOURCE_FILE, new_data_frame)
+    if full_data_frame is None:
+        return JSONResponse(
+            content={"message": f"Error writing to file"},
+            status_code=HTTPStatus.BAD_REQUEST,
+        )
 
     # Everything went well so return the request
     return JSONResponse(content=request_json, status_code=HTTPStatus.CREATED)
