@@ -13,12 +13,12 @@ def csv_to_df(filename: str) -> Optional[pd.DataFrame]:
     return df
 
 
-def df_to_csv(filename: str, data_frame: pd.DataFrame) -> bool:
+def df_to_csv(filename: str, data_frame: pd.DataFrame) -> Optional[bool]:
     """
     Attempt to write dataframe to csv file, return None if error
     """
     try:
         data_frame.to_csv(filename, index=False)
-    except Exception:
-        return False
+    except Exception as e:
+        return None
     return True
