@@ -79,6 +79,10 @@ def validate_data(
             LOOKBACK_DAYS
         )
 
+        # If theres no last available data then we know this must be a new entry so skip validation
+        if last_available_data.empty:
+            return None
+
         # Iterate over supported price types and verify that the input value is within
         # 1 standard deviation of the mean over the lookback period, if not then return an error
         for price_type in SUPPORTED_PRICE_TYPES:
