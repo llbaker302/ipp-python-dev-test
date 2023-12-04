@@ -9,7 +9,7 @@ app = Starlette(
     debug=True,
     routes=[
         Route(path="/nifty/stocks/{symbol}", endpoint=price_data, methods=["GET"]),
-        Route(path="/nifty/stocks/", endpoint=create_price, methods=["POST"]),
+        Route(path="/nifty/stocks/{symbol}", endpoint=create_price, methods=["POST"]),
     ],
 )
 
